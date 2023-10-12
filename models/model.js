@@ -8,9 +8,7 @@ let users=mongoose.Schema({
       },
       email: {
         type: String,
-        required: true,
-        unique: true, 
-        trim: true 
+        required: true
       },
       phoneNumber: {
         type: String

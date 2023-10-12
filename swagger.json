@@ -1,0 +1,469 @@
+{
+    "swagger":"2.0",
+    "info":{
+       "description":"This is the swagger node.js API project",
+       "version":"1.0.0",
+       "title":"Authentication API ES "
+    },
+    "schemas":[
+       "http"
+    ],
+    "host":"localhost:4000",
+    "paths":{
+       "/user/createUser":{
+          "post":{
+             "summary":"user creation",
+             "description":"creation of user",
+             "produces":[
+                "application/json"
+             ],
+             "parameters":[
+                {
+                   "in":"body",
+                   "name":"user",
+                   "description":"user object",
+                   "required":true,
+                   "schema":{
+                        "type":"object",
+                        "$ref":"#/definitions/user"
+                        
+                      
+                   }
+                }
+             ],
+             "responses":{
+                "201":{
+                   "description":"user created sccussfully",
+                   "sechema":{
+                      "type":"object",
+                       "$ref":"#/definitions/userResponse"
+                      
+                   }
+                },
+                "409":{
+                   "description":"user alredy exist",
+                   "sechema":{
+                      "$ref":"#/definitions/userResponse"
+                   }
+                },
+                "400":{
+                    "description":"user creation failure",
+                    "sechema":{
+                       "$ref":"#/definitions/userResponse"
+                    }
+                }
+             }
+          }
+       }
+       ,
+       "/user/getAllUsers":{
+          "get":{
+             "summary":"get all users",
+             "description":"get all users ",
+             "produces":[
+                "application/json"
+             ],
+             "consumes":[
+                "application/json"
+             ],
+             "responses":{
+                "200":{
+                   "description":"user login is done",
+                   "schema":{
+                    "items":{
+                        "type":"object",
+                        "$ref":"#/definitions/carCategory"
+                     }
+                      
+                   }
+                },
+                "400":{
+                   "description":"Invalid Email or Password",
+                   "schema":{
+                      "$ref":"#/definitions/userResponse"
+                   }
+                }
+             }
+          }
+       },
+"/user/getUser/{id}":{
+   "get":{
+      "summary":"get user by id",
+      "description":"get user by id",
+      "produces":[
+         "application/json"
+      ],
+      "parameters":[
+         {
+            "in":"path",
+            "name":"id",
+            "description":"get user by id",
+            "required":true,
+            "type":"string"
+           
+         }
+      ],
+      "responses":{
+         "201":{
+            "description":"get user by id sccussfully",
+            "sechema":{
+               "type":"object",
+                "$ref":"#/definitions/inquiry"
+               
+            }
+         },
+         "500":{
+             "description":"something went wrong",
+             "sechema":{
+                "$ref":"#/definitions/userResponse"
+             }
+         }
+      }
+   }
+},
+"/user/deleteUser/{id}":{
+   "delete":{
+      "summary":"delete user",
+      "description":"delete user",
+      "produces":[
+         "application/json"
+      ],
+      "parameters":[
+         {
+            "in":"path",
+            "name":"id",
+            "description":"delete user data for specific Id",
+            "required":true,
+            "type":"string"
+           
+         }
+      ],
+      "responses":{
+         "201":{
+            "description":"delete car done",
+            "sechema":{
+               "type":"object",
+                "$ref":"#/definitions/userResponse"
+               
+            }
+         },
+         "500":{
+             "description":"something went wrong",
+             "sechema":{
+                "$ref":"#/definitions/userResponse"
+             }
+         }
+      }
+   }
+},
+"/user/updateUser":{
+   "put":{
+      "summary":"update user",
+      "description":"update user",
+      "produces":[
+         "application/json"
+      ],
+      "parameters":[
+         {
+            "in":"body",
+            "name":"user",
+            "description":"inquiry object",
+            "required":true,
+            "schema":{
+                 "type":"object",
+                 "$ref":"#/definitions/user"
+                 
+               
+            }
+         }
+      ],
+      "responses":{
+         "201":{
+            "description":"update user ",
+            "sechema":{
+               "type":"object",
+                "$ref":"#/definitions/userResponse"
+               
+            }
+         },
+         "500":{
+             "description":"something went wrong",
+             "sechema":{
+                "$ref":"#/definitions/userResponse"
+             }
+         }
+      }
+   }
+},
+"/post/createPost":{
+    "post":{
+       "summary":"post creation",
+       "description":"creation of post",
+       "produces":[
+          "application/json"
+       ],
+       "parameters":[
+          {
+             "in":"body",
+             "name":"post",
+             "description":"user object",
+             "required":true,
+             "schema":{
+                  "type":"object",
+                  "$ref":"#/definitions/postData"
+                  
+                
+             }
+          }
+       ],
+       "responses":{
+          "201":{
+             "description":"post created sccussfully",
+             "sechema":{
+                "type":"object",
+                 "$ref":"#/definitions/userResponse"
+                
+             }
+          },
+          "400":{
+              "description":"post creation failure",
+              "sechema":{
+                 "$ref":"#/definitions/userResponse"
+              }
+          }
+       }
+    }
+ }
+ ,
+ "/post/getAllPosts":{
+    "get":{
+       "summary":"get all posts",
+       "description":"get all posts ",
+       "produces":[
+          "application/json"
+       ],
+       "consumes":[
+          "application/json"
+       ],
+       "responses":{
+          "200":{
+             "description":"post ",
+             "schema":{
+              "items":{
+                  "type":"object",
+                  "$ref":"#/definitions/post"
+               }
+                
+             }
+          },
+          "400":{
+             "description":"Invalid Email or Password",
+             "schema":{
+                "$ref":"#/definitions/userResponse"
+             }
+          }
+       }
+    }
+ },
+"/post/getPost/{id}":{
+"get":{
+"summary":"get user by id",
+"description":"get user by id",
+"produces":[
+   "application/json"
+],
+"parameters":[
+   {
+      "in":"path",
+      "name":"id",
+      "description":"get post by id",
+      "required":true,
+      "type":"string"
+     
+   }
+],
+"responses":{
+   "201":{
+      "description":"get post  by id sccussfully",
+      "sechema":{
+         "type":"object",
+          "$ref":"#/definitions/post"
+         
+      }
+   },
+   "500":{
+       "description":"something went wrong",
+       "sechema":{
+          "$ref":"#/definitions/userResponse"
+       }
+   }
+}
+}
+},
+"/post/getPostByUserId/{id}":{
+    "get":{
+    "summary":"get user by id",
+    "description":"get user by id",
+    "produces":[
+       "application/json"
+    ],
+    "parameters":[
+       {
+          "in":"path",
+          "name":"id",
+          "description":"get post by id",
+          "required":true,
+          "type":"string"
+         
+       }
+    ],
+    "responses":{
+       "201":{
+          "description":"get post  by id sccussfully",
+          "sechema":{
+             "type":"object",
+              "$ref":"#/definitions/post"
+             
+          }
+       },
+       "500":{
+           "description":"something went wrong",
+           "sechema":{
+              "$ref":"#/definitions/userResponse"
+           }
+       }
+    }
+    }
+    },
+"/post/deletePost/{id}":{
+"delete":{
+"summary":"delete post",
+"description":"delete post",
+"produces":[
+   "application/json"
+],
+"parameters":[
+   {
+      "in":"path",
+      "name":"id",
+      "description":"delete post data for specific Id",
+      "required":true,
+      "type":"string"
+     
+   }
+],
+"responses":{
+   "201":{
+      "description":"delete post done",
+      "sechema":{
+         "type":"object",
+          "$ref":"#/definitions/userResponse"
+         
+      }
+   },
+   "500":{
+       "description":"something went wrong",
+       "sechema":{
+          "$ref":"#/definitions/userResponse"
+       }
+   }
+}
+}
+},
+"/post/updatePost":{
+"put":{
+"summary":"update post",
+"description":"update post",
+"produces":[
+   "application/json"
+],
+"parameters":[
+   {
+      "in":"body",
+      "name":"post",
+      "description":"post object",
+      "required":true,
+      "schema":{
+           "type":"object",
+           "$ref":"#/definitions/postData"
+           
+         
+      }
+   }
+],
+"responses":{
+   "201":{
+      "description":"update post",
+      "sechema":{
+         "type":"object",
+          "$ref":"#/definitions/userResponse"
+         
+      }
+   },
+   "500":{
+       "description":"something went wrong",
+       "sechema":{
+          "$ref":"#/definitions/userResponse"
+       }
+   }
+}
+}
+}
+    },
+    "definitions":{
+       "userResponse":{
+          "type":"object",
+          "properties":{
+             "status":{
+                "type":"integer"
+             },
+             "message":{
+                "type":"string"
+             }
+             
+          }
+       },
+       "user":{
+          "type":"object",
+          "properties":{
+            "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "phoneNumber": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              }
+
+          }
+        },
+        "postData":{
+            "type":"object",
+            "properties":{
+            "postName": {
+                "type": "string"
+    
+              },
+              "postDescription": {
+                "type": "string"
+              },
+              "userId": {
+                "type": "string"
+               
+              },
+              "createdAt": {
+                "type": "Date"
+              },
+              "updatedAt": {
+                "type": "Date"
+              }
+        }
+    }
+   }
+ }  
+    
+ 
